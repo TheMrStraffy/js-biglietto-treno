@@ -11,7 +11,7 @@ let applicaSconto;
 if( (isNaN(etaUtente)) || (isNaN(kmRichiesti)) || ((etaUtente && kmRichiesti) === 0)){
   alert("Inserire un numero valido");
   document.getElementById('what').innerHTML = `
-  <div class="card mb-2 py-3">
+  <div class="card mb-2 py-3 bg-light bg-opacity-75">
     whatchu doin bruv? <br>
   </div>
   `;
