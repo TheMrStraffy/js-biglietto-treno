@@ -8,6 +8,15 @@ let calcoloBiglietto = kmRichiesti * euroAlKm;
 let prezzoFinale;
 let applicaSconto;
 
+if( (isNaN(etaUtente)) || (isNaN(kmRichiesti)) || ((etaUtente && kmRichiesti) === 0)){
+  alert("Inserire un numero valido");
+  document.getElementById('what').innerHTML = `
+  <div class="card mb-2 py-3">
+    whatchu doin bruv? <br>
+  </div>
+  `;
+}
+
 if(etaUtente < 18){
   applicaSconto = calcoloBiglietto *scontoMinorenni;
   calcoloBiglietto -= applicaSconto;
