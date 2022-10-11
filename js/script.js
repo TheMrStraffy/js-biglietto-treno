@@ -15,9 +15,7 @@ if( (isNaN(etaUtente)) || (isNaN(kmRichiesti)) || ((etaUtente && kmRichiesti) ==
     whatchu doin bruv? <br>
   </div>
   `;
-}
-
-if(etaUtente < 18){
+} else if(etaUtente < 18){
   applicaSconto = calcoloBiglietto *scontoMinorenni;
   calcoloBiglietto -= applicaSconto;
   document.getElementById('output').innerHTML = `
@@ -79,3 +77,4 @@ if(etaUtente < 18){
   </div>
 `;
 }
+
