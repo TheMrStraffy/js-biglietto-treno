@@ -30,6 +30,9 @@ calculateForm.addEventListener('click', function(){
   } else if (userAge > 65){
     discountShown = ticketPrice * discount65
     ticketPrice = ticketPrice - ticketPrice * discount65;
+  } else{
+    const hideBoxDiscount = document.getElementById('resultDiscount');
+    hideBoxDiscount.classList.add('d-none');
   }
 
   let resultName = document.getElementById('resultName').innerHTML=`
