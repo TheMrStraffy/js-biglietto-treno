@@ -23,6 +23,10 @@ calculateForm.addEventListener('click', function(){
   let kmRequired = parseInt(document.querySelector('#kmRequired').value);
   let discountShown;
 
+  if((isNaN(userAge) || (isNaN(kmRequired) || (userName === undefined) || (userAge && kmRequired) === 0))){
+    alert("Inserire Valori validi");
+  };
+
   let ticketPrice = kmRequired * kmPerEuro;
   if(userAge < 18){
     discountShown = ticketPrice * discount18
