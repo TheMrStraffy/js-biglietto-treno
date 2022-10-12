@@ -1,80 +1,52 @@
-let etaUtente = parseInt(prompt("Quanti anni ha?"));
-let kmRichiesti = parseInt(prompt("Quanti chilometri vuole percorrere?"));
-const euroAlKm = 0.21;
-const scontoMinorenni = 0.2;
-const scontoOver65 = 0.4;
 
-let calcoloBiglietto = kmRichiesti * euroAlKm;
-let prezzoFinale;
-let applicaSconto;
 
-if( (isNaN(etaUtente)) || (isNaN(kmRichiesti)) || ((etaUtente && kmRichiesti) === 0)){
-  alert("Inserire un numero valido");
-  document.getElementById('what').innerHTML = `
-  <div class="card mb-2 py-3 bg-light bg-opacity-75">
-    whatchu doin bruv? <br>
-  </div>
+
+// function ticketDetails(){
+//   let userName = document.querySelector('#userName').value;
+//   console.log(userName);
+//   let userAge = parseInt(document.querySelector('#userAge').value);
+//   console.log(userAge);
+//   let kmRequired = parseInt(document.querySelector('#kmRequired').value);
+//   console.log(kmRequired);
+// }
+const checkResult = document.querySelector('.checkResult');
+let calculateForm = document.getElementById('calculateForm');
+const discount65 = 0.4;
+const discount18 = 0.2;
+const kmPerEuro = 0.21;
+
+calculateForm.addEventListener('click', function(){
+  checkResult.classList.remove('d-none');
+
+  let userName = document.querySelector('#userName').value;
+  let userAge = parseInt(document.querySelector('#userAge').value);
+  let kmRequired = parseInt(document.querySelector('#kmRequired').value);
+  let discountShown;
+
+  let ticketPrice = kmRequired * kmPerEuro;
+  if(userAge < 18){
+    discountShown = ticketPrice * discount18
+    ticketPrice = ticketPrice - ticketPrice * discount18;
+  } else if (userAge > 65){
+    discountShown = ticketPrice * discount65
+    ticketPrice = ticketPrice - ticketPrice * discount65;
+  }
+
+  let resultName = document.getElementById('resultName').innerHTML=`
+  Name:  ${userName}
   `;
-} else if(etaUtente < 18){
-  applicaSconto = calcoloBiglietto *scontoMinorenni;
-  calcoloBiglietto -= applicaSconto;
-  document.getElementById('output').innerHTML = `
-  <div class="card mb-2 py-3">
-    Eta Utente: ${etaUtente} <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Km Richiesti: ${kmRichiesti} <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Euro al Km: ${euroAlKm} <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Sconto Minorenni: ${scontoMinorenni * 100}% <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Calcolo Sconto:  ${applicaSconto.toFixed(2)} &euro; <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Prezzo Finale: ${calcoloBiglietto.toFixed(2)} &euro; <br>
-  </div>
-`;
-} else if (etaUtente > 65){
-  applicaSconto = calcoloBiglietto * scontoOver65;
-  calcoloBiglietto -= applicaSconto;
-  document.getElementById('output').innerHTML = `
-  <div class="card mb-2 py-3">
-    Eta Utente: ${etaUtente} <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Km Richiesti: ${kmRichiesti} <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Euro al Km: ${euroAlKm} <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Sconto Over 65: ${scontoOver65 * 100}% <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Calcolo Sconto:  ${applicaSconto.toFixed(2)} &euro; <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Prezzo Finale: ${calcoloBiglietto.toFixed(2)} &euro; <br>
-  </div>
-`;
-} else {
-  document.getElementById('output').innerHTML = `
-  <div class="card mb-2 py-3">
-    Eta Utente: ${etaUtente} <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Km Richiesti: ${kmRichiesti} <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Euro al Km: ${euroAlKm} <br>
-  </div>
-  <div class="card mb-2 py-3">
-    Prezzo Finale: ${calcoloBiglietto.toFixed(2)} &euro; <br>
-  </div>
-`;
-}
+  let resultAge = document.getElementById('resultAge').innerHTML=`
+  Age:  ${userAge}
+  `;
+  let resultKmRequired = document.getElementById('resultKmRequired').innerHTML=`
+  Kilometers Requested: ${kmRequired} Km
+  `;
+  let resultPrice = document.getElementById('resultPrice').innerHTML=`
+  Price of your ticket: ${ticketPrice.toFixed(2)} &euro;
+  `;
+  let resultDiscount = document.getElementById('resultDiscount').innerHTML=`
+  Discount: ${discountShown.toFixed(2)} &euro;
+  `;
 
+  
+  })
