@@ -29,10 +29,10 @@ calculateForm.addEventListener('click', function(){
 
   let ticketPrice = kmRequired * kmPerEuro;
   if(userAge < 18){
-    discountShown = ticketPrice * discount18
+    discountShown = ticketPrice * discount18;
     ticketPrice = ticketPrice - ticketPrice * discount18;
   } else if (userAge > 65){
-    discountShown = ticketPrice * discount65
+    discountShown = ticketPrice * discount65;
     ticketPrice = ticketPrice - ticketPrice * discount65;
   } else{
     const hideBoxDiscount = document.getElementById('resultDiscount');
